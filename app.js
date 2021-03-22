@@ -48,16 +48,16 @@ app.get("/",function(req,res){
   res.send("Hello World");
 });
 
- app.get("/employees",function(req,res) {
-    Employee.find(function(err,foundEmployees){
-        if(!err){
-            res.send(foundEmployees);
-        }else{
-            res.send(err);
-        }
+//  app.get("/employees",function(req,res) {
+//     Employee.find(function(err,foundEmployees){
+//         if(!err){
+//             res.send(foundEmployees);
+//         }else{
+//             res.send(err);
+//         }
        
-    });
- });
+//     });
+//  });
 
 
   
