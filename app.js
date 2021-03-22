@@ -44,8 +44,11 @@ const employeeSchema = {
   }
 
 const Employee = mongoose.model("Employee", employeeSchema);
+app.get("/",function(req,res){
+  res.send("Hello World");
+});
 
- app.get("/",function(req,res) {
+ app.get("/employees",function(req,res) {
     Employee.find(function(err,foundEmployees){
         if(!err){
             res.send(foundEmployees);
