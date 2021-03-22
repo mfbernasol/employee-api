@@ -43,7 +43,7 @@ const employeeSchema = {
     
   }
 
-// const Employee = mongoose.model("Employee", employeeSchema);
+const Employee = mongoose.model("Employee", employeeSchema);
 app.get("/",function(req,res){
   res.send("Hello World");
 });
