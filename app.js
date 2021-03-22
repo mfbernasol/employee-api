@@ -43,10 +43,10 @@ app.use(express.urlencoded({extended:true}));
     
 //   }
 
-// const Employee = mongoose.model("Employee", employeeSchema);
-// app.get("/",function(req,res){
-//   res.send("Hello World");
-// });
+const Employee = mongoose.model("Employee", employeeSchema);
+app.get("/",function(req,res){
+  res.send("Hello World");
+});
 
 //  app.get("/employees",function(req,res) {
 //     Employee.find(function(err,foundEmployees){
