@@ -48,6 +48,7 @@ app.get("/",function(req,res){
   res.send("Hello World");
 });
 
+//GET employees
  app.get("/employees",function(req,res) {
     Employee.find(function(err,foundEmployees){
         if(!err){
@@ -57,6 +58,34 @@ app.get("/",function(req,res){
         }
        
     });
+ });
+
+ //POST 
+ app.post("/employees",function(req,res){
+
+  const newEmployee = new Employee({
+    lastName: req.body.lname,
+    firstName: req.body.fname,
+    email: req.body.email,
+    workID: req.body.workID,
+    datePositiveTest: req.body.datePositiveTest,
+    dateNegativeTest: req.body.dateNegativeTest,
+    vacStatus: req.body.vacStatus,
+    dateOfVac: req.body.dateVac,
+    infected: req.body.infected,
+    inQuarantine: req.body.quaratine,
+    quarDate: req.body.quarDate,
+    quarEndDate: req.body.quarEndDate
+
+
+  });
+  newEmployee.save(function(err){
+    if(!err){
+      res.send("Successfully added employee")
+    }else{
+      res.send(err);
+    }
+  });
  });
 
 
