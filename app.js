@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 app.use(express.urlencoded({extended:true}));
-
+app.use(cors());
 mongoose.connect('mongodb+srv://test-user:user1234@cluster0.jdj0v.mongodb.net/employee', { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 
 const employeeSchema = {
