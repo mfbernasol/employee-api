@@ -88,7 +88,26 @@ app.get("/",function(req,res){
   });
  });
 
+ //DELETES ALL employee records
+//  app.delete("/employees",function(req,res){
+//    Employee.deleteMany(function(err){
+//      if(!err){
+//        res.send("Successfully deleted all articles");
+//      }else{
+//        res.send(err);
+//      }
+//    })
+//  })
 
+app.delete("/employees/:id",function(req,res){
+  Employee.deleteOne({workID: req.params.id},function(err){
+    if(!err){
+      res.send("Successfully deleted employee record")
+    }else{
+      res.send(err);
+    }
+  })
+});
   
 const port = process.env.PORT || 4000
 // const port2 = 5300
