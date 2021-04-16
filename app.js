@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const cors = require('cors');
+
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
 mongoose.connect('mongodb+srv://test-user:user1234@cluster0.jdj0v.mongodb.net/employee', { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
@@ -99,6 +100,7 @@ app.get("/",function(req,res){
 //    })
 //  })
 
+//Delete one employee
 app.delete("/employees/:id",function(req,res){
   Employee.deleteOne({workID: req.params.id},function(err){
     if(!err){
@@ -107,6 +109,22 @@ app.delete("/employees/:id",function(req,res){
       res.send(err);
     }
   })
+});
+
+//Updates one employee document
+app.patch("/employees/:id",function(req,res){
+  Employee.updateOne(
+   {infected: req.params.infected},
+   req.body,
+   function(err){
+     if(!err){
+       res.send("Updated record success")
+       console.log("Updated record successful")
+     }else{
+       res.send(err);
+     }
+   }
+  )
 });
   
 const port = process.env.PORT || 4000
